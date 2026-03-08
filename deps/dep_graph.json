@@ -1,0 +1,86 @@
+{
+  "packages": {
+    "web-app": {
+      "1.0.0": {
+        "requires": [
+          "api>=1.0.0",
+          "database>=1.0.0"
+        ]
+      }
+    },
+    "api": {
+      "2.0.0": {
+        "requires": [
+          "json-lib>=2.0.0",
+          "auth>=1.0.0"
+        ]
+      },
+      "1.0.0": {
+        "requires": [
+          "json-lib>=1.0.0",
+          "auth>=1.0.0"
+        ]
+      }
+    },
+    "database": {
+      "2.0.0": {
+        "requires": [
+          "json-lib<2.0.0",
+          "cache>=1.0.0"
+        ]
+      },
+      "1.0.0": {
+        "requires": [
+          "json-lib<2.0.0",
+          "cache>=1.0.0"
+        ]
+      }
+    },
+    "auth": {
+      "2.0.0": {
+        "requires": [
+          "crypto>=2.0.0"
+        ]
+      },
+      "1.0.0": {
+        "requires": [
+          "crypto>=1.0.0"
+        ]
+      }
+    },
+    "cache": {
+      "2.0.0": {
+        "requires": [
+          "crypto<2.0.0"
+        ]
+      },
+      "1.0.0": {
+        "requires": [
+          "crypto<2.0.0"
+        ]
+      }
+    },
+    "json-lib": {
+      "2.0.0": {
+        "requires": []
+      },
+      "1.5.0": {
+        "requires": []
+      },
+      "1.0.0": {
+        "requires": []
+      }
+    },
+    "crypto": {
+      "2.0.0": {
+        "requires": []
+      },
+      "1.5.0": {
+        "requires": []
+      },
+      "1.0.0": {
+        "requires": []
+      }
+    }
+  }
+}
