@@ -43,7 +43,7 @@ class Constraint:
 
 @dataclass
 class Version:
-    """Singular package."""
+    """Package dependency version and transitive deps."""
 
     number: str
     dependencies: list[Constraint]

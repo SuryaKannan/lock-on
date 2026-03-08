@@ -13,7 +13,8 @@ class PackageManager(ABC):
         self.index: dict[str, Package] = self._read_dependencies()
 
     def _read_requirements(self) -> list[Constraint]:
-        """Discover requirements.txt."""
+        """Parse mock requirements.txt."""
+
         with Path("deps/requirements.txt").open() as file:
             return [
                 Constraint.from_string(requirement)
@@ -24,8 +25,8 @@ class PackageManager(ABC):
         """
         Parse mock dependency graphs
 
-        this imitates what we would recieve by constructing
-        dependency graphs by reading wheel metadata.
+        this imitates what we would ultimately recieve from
+        constructing dependency graphs by reading wheel metadata.
         """
 
         index: dict[str, Package] = {}
@@ -46,7 +47,15 @@ class PackageManager(ABC):
 
         return index
 
+    def _write_to_lock_file(self, solution: dict) -> None:
+        """Write the final solution from resolver to lock file."""
+
+        with Path("deps/lock.json").open("w") as file:
+            sol_json = json.dumps(solution, indent=4)
+            file.write(sol_json)
+
     @abstractmethod
-    def resolve(self) -> dict:
+    def resolve(self) -> None:
         """Resolver implmentation"""
-        return {}
+
+        pass
