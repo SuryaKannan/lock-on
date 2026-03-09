@@ -1,5 +1,9 @@
+from lock_on.backtracker import BackTracker
+
+
 def main():
-    pass
+    b = BackTracker()
+    b.resolve()
 
 
 if __name__ == "__main__":

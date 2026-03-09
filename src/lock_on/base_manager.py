@@ -8,6 +8,11 @@ from lock_on.models import Constraint, Package, Version
 class PackageManager(ABC):
     """Interface for a toy package manager."""
 
+    RED = "\033[91m"
+    YELLOW = "\033[93m"
+    GREEN = "\033[92m"
+    RESET = "\033[0m"
+
     def __init__(self):
         self.requirements: list[Constraint] = self._read_requirements()
         self.index: dict[str, Package] = self._read_dependencies()
@@ -46,6 +51,9 @@ class PackageManager(ABC):
                 index[package] = pkg
 
         return index
+
+    def _log(self, msg: str, colour: str) -> None:
+        print(f"{colour}{msg}{self.RESET}")
 
     def _write_to_lock_file(self, solution: dict) -> None:
         """Write the final solution from resolver to lock file."""

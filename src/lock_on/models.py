@@ -6,7 +6,7 @@ from dataclasses import dataclass
 class Constraint:
     """Singular package specifc constraint."""
 
-    target_package_name: str
+    package_name: str
     operator: str
     version: str
 
@@ -17,7 +17,7 @@ class Constraint:
 
         if match is not None:
             name, op, ver = match.groups()
-            return cls(target_package_name=name, operator=op, version=ver)
+            return cls(package_name=name, operator=op, version=ver)
         raise ValueError("invalid contraint in graph")
 
     def is_satisfied_by(self, candidate: str) -> bool:
