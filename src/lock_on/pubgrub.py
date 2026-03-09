@@ -1,9 +1,10 @@
-from lock_on.base_manager import PackageManager
+from lock_on.resolver import Resolver
 
 
-class PubGrub(PackageManager):
+class PubGrub(Resolver):
     def __init__(self):
         super().__init__()
 
-    def resolve(self) -> None:
+    def resolve(self, verbose=False) -> None:
+        self.verbose = verbose
         pass

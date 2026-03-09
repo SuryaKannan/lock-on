@@ -40,3 +40,6 @@ extend-select = [
     "TD",       # Be diligent with TODO comments
     "NPY",      # Some numpy-specific things
 ]
+ignore = [
+    "E501",     # Line too long
+]

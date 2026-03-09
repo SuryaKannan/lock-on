@@ -5,7 +5,7 @@ from pathlib import Path
 from lock_on.models import Constraint, Package, Version
 
 
-class PackageManager(ABC):
+class Resolver(ABC):
     """Interface for a toy package manager."""
 
     RED = "\033[91m"
@@ -16,6 +16,7 @@ class PackageManager(ABC):
     def __init__(self):
         self.requirements: list[Constraint] = self._read_requirements()
         self.index: dict[str, Package] = self._read_dependencies()
+        self.verbose = False
 
     def _read_requirements(self) -> list[Constraint]:
         """Parse mock requirements.txt."""
@@ -52,8 +53,9 @@ class PackageManager(ABC):
 
         return index
 
-    def _log(self, msg: str, colour: str) -> None:
-        print(f"{colour}{msg}{self.RESET}")
+    def _log(self, msg: str, colour: str, override: bool = False) -> None:
+        if self.verbose or override:
+            print(f"{colour}{msg}{self.RESET}")
 
     def _write_to_lock_file(self, solution: dict) -> None:
         """Write the final solution from resolver to lock file."""
@@ -63,7 +65,6 @@ class PackageManager(ABC):
             file.write(sol_json)
 
     @abstractmethod
-    def resolve(self) -> None:
+    def resolve(self, verbose=False) -> None:
         """Resolver implmentation"""
-
         pass
