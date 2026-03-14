@@ -1,9 +1,5 @@
-from typing import TYPE_CHECKING
-
+from lock_on.models import Constraint
 from lock_on.resolver import Resolver
-
-if TYPE_CHECKING:
-    from lock_on.models import Constraint
 
 
 class BackTracker(Resolver):

@@ -42,4 +42,5 @@ extend-select = [
 ]
 ignore = [
     "E501",     # Line too long
+    "TC001",    # Import only used for type checking
 ]
